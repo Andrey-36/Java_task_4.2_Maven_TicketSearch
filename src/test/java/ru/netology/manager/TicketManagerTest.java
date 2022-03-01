@@ -60,9 +60,8 @@ class TicketManagerTest {
 
     @Test
     void shouldSearchByAirport() {
-        Ticket[] expected = {secondTicket, firstTicket};
-        Ticket[] actual = manager.searchAirport("LED", "AER",
-                (o1, o2) -> o1.getTravelTime() - o2.getTravelTime());
+        Ticket[] expected = {thirdTicket, firstTicket};
+        Ticket[] actual = manager.searchAirport("LED", "AAQ");
 
         assertArrayEquals(expected, actual);
     }
