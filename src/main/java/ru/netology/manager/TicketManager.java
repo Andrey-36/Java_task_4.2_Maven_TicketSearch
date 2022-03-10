@@ -16,17 +16,12 @@ public class TicketManager {
         repository.save(ticket);
     }
 
-    public Ticket[] searchAirport(String DepartureAirport, String ArrivalAirport) {
+    public Ticket[] searchAirport(String departureAirport, String arrivalAirport) {
         Ticket[] result = new Ticket[0];
 
         for (Ticket ticket : repository.findAllAirport("LED", "AER")) {
-            if (ticket.getDepartureAirport().equalsIgnoreCase(DepartureAirport)) {
-                Ticket[] tmp = new Ticket[result.length + 1];
-                System.arraycopy(result, 0, tmp, 0, result.length);
-                tmp[tmp.length - 1] = ticket;
-                result = tmp;
-            }
-            if (ticket.getArrivalAirport().equalsIgnoreCase(ArrivalAirport)) {
+            if ((ticket.getDepartureAirport().equalsIgnoreCase(departureAirport)) |
+                    (ticket.getArrivalAirport().equalsIgnoreCase(arrivalAirport))) {
                 Ticket[] tmp = new Ticket[result.length + 1];
                 System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = ticket;
